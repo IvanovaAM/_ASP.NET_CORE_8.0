@@ -2,7 +2,6 @@ internal class Program
 {
 	private static void Main(string[] args)
 	{
-		//Тестовый комментарий
 		var builder = WebApplication.CreateBuilder(args);
 
 		// Add services to the container.
