@@ -18,7 +18,7 @@ namespace OnlineShopWebApp.Controllers
 				case "-":
 					return $"{num1} {sign} {num2} = {num1 - num2}";
 
-				case "'*'":
+				case "*":
 					return $"{num1} {sign} {num2} = {num1 * num2}";
 
 				default:
