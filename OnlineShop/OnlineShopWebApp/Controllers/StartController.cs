@@ -4,23 +4,23 @@ namespace OnlineShopWebApp.Controllers
 {
 	public class StartController : Controller
 	{
-		private string[] message = ["Доброе утро", "Добрый день", "Добрый вечер", "Доброй ночи"];
+		private string[] message = ["Доброй ночи", "Доброе утро", "Добрый день", "Добрый вечер"];
 
 		public string Hello()
 		{
-			var timeNow = DateTime.Now.TimeOfDay;
+			var timeNow = DateTime.Now.Hour;
 
-			if (timeNow >= new TimeSpan(0, 0, 0) && timeNow <= new TimeSpan(5, 59, 0))
+			if (timeNow < 6)
 			{
 				return message[0];
 			}
 
-			if (timeNow >= new TimeSpan(6, 0, 0) && timeNow <= new TimeSpan(11, 59, 0))
+			if (timeNow < 12)
 			{
 				return message[1];
 			}
 
-			if (timeNow >= new TimeSpan(12, 0, 0) && timeNow <= new TimeSpan(17, 59, 0))
+			if (timeNow < 18)
 			{
 				return message[2];
 			}			
