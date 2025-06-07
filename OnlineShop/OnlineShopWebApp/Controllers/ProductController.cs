@@ -5,11 +5,11 @@ namespace OnlineShopWebApp.Controllers
 {
 	public class ProductController : Controller
 	{
-		private readonly ProductsRepository productsRepository = new();
+		private readonly ProductRepository productsRepository = new();
 
 		public IActionResult Index(int id)
 		{
-			return View(productsRepository.GetProduct(id));
+			return View(productsRepository.TryGetById(id));
 		}
 	}
 }

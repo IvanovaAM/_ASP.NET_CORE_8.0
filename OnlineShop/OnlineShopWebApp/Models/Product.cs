@@ -1,10 +1,11 @@
 ﻿namespace OnlineShopWebApp.Models
 {
-	public class Product(int id, string name, decimal cost, string description)
+	public class Product(string name, decimal cost, string description)
 	{
-		public int Id { get; set; } = id;
-		public string Name { get; set; } = name;
-		public decimal Cost { get; set; } = cost;
-		public string Description { get; set; } = description;				
-	}	
+		private static int instanceCounter = 1;
+		public int Id { get; } = instanceCounter++;
+		public string Name { get; } = name;
+		public decimal Cost { get; } = cost;
+		public string Description { get; } = description;
+	}
 }
