@@ -6,9 +6,9 @@
 <div>
 	@foreach (var product in Model)
 	{
-		<div>@product.Id</div>
-		<div>@product.Name</div>
-		<div>@product.Cost</div>
+		<a href="/product/index/@product.Id">@product.Id</a>
+		<p>@product.Name</p>
+		<p>@product.Cost</p>
 		<p></p>
 	}
 </div>

@@ -6,5 +6,5 @@
 		public string Name { get; set; } = name;
 		public decimal Cost { get; set; } = cost;
 		public string Description { get; set; } = description;				
-	}
+	}	
 }
