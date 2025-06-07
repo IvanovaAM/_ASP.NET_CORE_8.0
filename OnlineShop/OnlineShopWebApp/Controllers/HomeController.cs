@@ -13,7 +13,7 @@ namespace OnlineShopWebApp.Controllers
 
 		public IActionResult Index()
         {
-            return View(productsRepository.GetProducts());
+            return View(productsRepository.GetAll());
         }
     }
 }
