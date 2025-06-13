@@ -27,12 +27,12 @@ body {
   margin-bottom: 60px;
 }
 
-.container {
+.row {
     margin-left: 72px;
     margin-right: 72px;
 }
 
-.container-title {
+.row-title {
     text-align:center;
     margin-top: 60px;
     margin-bottom: 60px;

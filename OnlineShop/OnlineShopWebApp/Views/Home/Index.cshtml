@@ -3,28 +3,27 @@
 	ViewData["Title"] = "Home Page";
 }
 
-<div class="container" id="recommended">
-	<h2 class="container-title">Рекомендуемые товары</h2>
+<div class="row" id="recommended">
+	<h2 class="row-title">Рекомендуемые товары</h2>
 
-	<div class="row">
-		@foreach (var product in Model)
-		{
-			<div class="col-4 mb-4">
-				<div class="card">
-					<img src="/img/product.png" class="card-img-top" alt="...">
-					<div class="card-body">
-						<p class="productId">Артикул товара: @product.Id</p>
-						<a href="/product/index/@product.Id" class="card-title">@product.Name</a>
-						<p>@product.Cost &#8381</p>
-						<p class="card-text">@product.Description</p>
-						<a href="#" class="btn btn-primary">Добавить в корзину</a>
-						<a href="#" class="btn btn-light float-end heart">&#9825;</a>
-					</div>
+	@foreach (var product in Model)
+	{
+		<div class="col-4 mb-4">
+			<div class="card">
+				<img src="/img/product.png" class="card-img-top" alt="...">
+				<div class="card-body">
+					<p class="productId">Артикул товара: @product.Id</p>
+					<a href="/product/index/@product.Id" class="card-title">@product.Name</a>
+					<p>@product.Cost &#8381</p>
+					<p class="card-text">@product.Description</p>
+					<a href="#" class="btn btn-primary">Добавить в корзину</a>
+					<a href="#" class="btn btn-light float-end heart">&#9825;</a>
 				</div>
 			</div>
-		}
-	</div>
+		</div>
+	}
 </div>
+
 
 
 
