@@ -1,11 +1,17 @@
+* {
+    font-family: 'Comic Sans MS';
+}
+
 html {
-  font-size: 14px;
+    font-size: 14px;
+    font-family: 'Comic Sans MS';
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+        font-family: 'Comic Sans MS';
+    }
 }
 
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
@@ -20,3 +26,34 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.container {
+    margin-left: 72px;
+    margin-right: 72px;
+}
+
+.container-title {
+    text-align:center;
+    margin-top: 60px;
+    margin-bottom: 60px;
+    font-size: 40px;
+
+}
+
+.productId {
+    font-size: 12px;
+    color: gray;
+}
+
+.card-title {
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+
+.heart {
+    color: darkred;
+    background-color: transparent;
+}
+

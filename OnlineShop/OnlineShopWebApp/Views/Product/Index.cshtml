@@ -6,12 +6,32 @@
 }
 @if(Model != null)
 {
-<div>
-	<p>@Model.Id</p>
-	<p>@Model.Name</p>
-	<p>@Model.Cost</p>
-	<p>@Model.Description</p>	
+	<div class="row">
+		<div class="col-4"></div>
+		<div class="col-4 mb-4">
+				<div class="card">
+					<img src="/img/product.png" class="card-img-top" alt="...">
+					<div class="card-body">
+						<p class="productId">Артикул товара: @Model.Id</p>
+						<p class="card-title">@Model.Name</p>
+						<p>@Model.Cost &#8381</p>
+						<p class="card-text">@Model.Description</p>
+						<a href="#" class="btn btn-primary">Добавить в корзину</a>
+						<a href="#" class="btn btn-light float-end heart">&#9825;</a>
+					</div>
+				</div>
+			</div>
+		<div class="col-4"></div>
 	</div>
+	
+	<div class="row">
+		<div class="col-5"></div>
+			<div class="col-2 mb-4">
+				<a href="/home/index" class="btn btn-primary">Продолжить покупки</a>
+			</div>
+		<div class="col-5"></div>
+	</div>
+
 }
 else
 {
