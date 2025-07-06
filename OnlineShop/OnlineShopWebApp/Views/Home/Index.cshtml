@@ -1,26 +1,30 @@
-﻿@model List<Product>
+﻿@model HomeViewModel
 @{
-	ViewData["Title"] = "Home Page";
+	ViewData["Title"] = "Главная";
 }
 
-<div class="row" id="recommended">
-	<h2 class="row-title">Рекомендуемые товары</h2>
-
-	@foreach (var product in Model)
+<div class="row justify-content-center">
+	@if (Model != null)
 	{
-		<div class="col-4 mb-4">
-			<div class="card">
-				<img src="/img/product.png" class="card-img-top" alt="...">
-				<div class="card-body">
-					<h5 class="productId">Артикул товара: @product.Id</h5>
-					<a href="/product/index/@product.Id" class="card-title"><h5>@product.Name</h5></a>
-					<h5>@product.Cost &#8381</h5>
-					<h6 class="card-text">@product.Description</h6>
-					<a href="#" class="btn btn-primary">Добавить в корзину</a>
-					<a href="#" class="btn btn-light float-end heart">&#9825;</a>
-				</div>
-			</div>
-		</div>
+		@if (!Model.IsFilter)
+		{
+			<h2 class="row-title mb-1">Рекомендуемые товары</h2>
+		}
+		else
+		{
+			<h2 class="row-title mb-1">Товары "@Model.CurrentFilter"</h2>
+		}
+		<h6 class="mt-0 mb-5 text-muted text-center">Количество товаров, шт.: @Model.ProductsViewModels.Count</h6>
+
+
+		@foreach (var product in Model.ProductsViewModels)
+		{
+			@await Html.PartialAsync("ProductCard", product)
+		}
+	}
+	else
+	{
+		<h2 class="row-title">Нет товаров для отображения!</h2>
 	}
 </div>
 

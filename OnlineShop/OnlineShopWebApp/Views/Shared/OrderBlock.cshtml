@@ -1,0 +1,32 @@
+﻿@model Cart
+
+<div class="col-3">
+	<div class="card">
+		<div class="card-body shadow">
+			<p>
+				<h5 class="card-title text-center text-decoration-underline">ВАШ ЗАКАЗ:</h5>
+			</p>
+
+			<table class="table table-hover">
+				<tbody>
+					<tr>
+						<td>В корзине:</td>
+						<td>@Model.Items.Sum(x => x.Quantity)</td>
+					</tr>
+					<tr>
+						<td>Итого:</td>
+						<td>@Model.TotalPrice.ToString("c")</td>
+					</tr>
+				</tbody>
+				<tfoot>
+					<tr align="center" class="mb-1">
+						<th colspan="2"><a class=" btn btn-warning" asp-controller="Order" asp-action="#" asp-route-cartId="@Model.Id">Оформить заказ</a></th>
+					</tr>
+					<tr align="center">
+						<th colspan="2"><a class=" btn btn-warning" asp-controller="Order" asp-action="#" asp-route-cartId="@Model.Id">Купить в один клик</a></th>
+					</tr>
+				</tfoot>
+			</table>
+		</div>
+	</div>
+</div>

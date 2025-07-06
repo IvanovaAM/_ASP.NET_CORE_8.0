@@ -1,0 +1,26 @@
+﻿@model ProductViewModel
+
+<div class="col-3 mb-3">
+	<div class="card h-100">
+		<img class="img-thumbnail" src="@Model.Product.ImagePath" alt="@Model.Product.Name">
+		<div class="card-body shadow">
+			<h6 class="card-subtitle mb-2 text-muted text-center">Артикул: @Model.Product.Id</h6>
+			<a href="/Home/Index?brandId=@Model.ProductBrand.Id"><h6 class="card-text">@Model.ProductBrand.Name</h6></a>
+			<p>
+				<a href="/product/index/@Model.Product.Id"><h5 class="card-title">@Model.Product.Name</h5></a>
+			</p>
+		</div>
+		<ul class="list-group list-group-flush border-0 text-center">
+			<li class="list-group-item">
+				<h6 class="card-text">@Model.Product.ShortDescription</h6>
+			</li>
+			<li class="list-group-item">
+				<h3>@Model.Product.Price.ToString("c")</h3>
+			</li>
+			<li class="list-group-item">
+				<a class=" btn btn-warning" asp-controller="Cart" asp-action="Add" asp-route-productId="@Model.Product.Id">Добавить в корзину</a>
+				<a href="#" class="btn btn-light float-end heart">&#9825;</a>
+			</li>
+		</ul>
+	</div>
+</div>

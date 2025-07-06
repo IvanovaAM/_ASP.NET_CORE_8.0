@@ -1,8 +1,13 @@
-﻿namespace OnlineShopWebApp.Models
+﻿using OnlineShopWebApp.Repositories;
+
+namespace OnlineShopWebApp.Models
 {
 	public class Cart
 	{
-		public required List<CartItem> CartItems { get; set; }
-		public decimal TotalCost { get; set; }
+		public Guid Id { get; set; }
+		public string UserId { get; set; }
+		public List<CartItem> Items { get; set; }
+		public decimal TotalPrice => Items.Sum(x => x.Price);
+		public DateTime CreationDateTime { get; set; } = DateTime.Now;	
 	}
 }

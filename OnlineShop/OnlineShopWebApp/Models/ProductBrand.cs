@@ -1,6 +1,6 @@
 ﻿namespace OnlineShopWebApp.Models
 {
-	public class ProductCategory(string name, string description, string imagePath)
+	public class ProductBrand(string name, string description, string imagePath)
 	{
 		private static uint instanceCounter = 1;
 		public uint Id { get; } = instanceCounter++;

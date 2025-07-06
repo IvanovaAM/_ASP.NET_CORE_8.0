@@ -1,42 +1,21 @@
-﻿@model Product
-@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
-@if(Model != null)
-{
-	<div class="row">
-		<div class="col-4"></div>
-		<div class="col-4 mb-4">
-				<div class="card">
-					<img src="/img/product.png" class="card-img-top" alt="...">
-					<div class="card-body">
-						<h5 class="productId">Артикул товара: @Model.Id</h5>
-						<h5 class="card-title">@Model.Name</h5>
-						<h5>@Model.Cost &#8381</h5>
-						<h6 class="card-text">@Model.Description</h6>
-						<a href="#" class="btn btn-primary">Добавить в корзину</a>
-						<a href="#" class="btn btn-light float-end heart">&#9825;</a>
-					</div>
-				</div>
-			</div>
-		<div class="col-4"></div>
-	</div>
-}
-else
-{
-	<div class="row">
-		<div class="col mb-4 text-center">
-			<h2>Такого продукта не существует!</h2>
-		</div>
-	</div>	
-}
+﻿@model ProductViewModel
 
-<div class="row">
-	<div class="col-4"></div>
-	<div class="col-4 mb-4 text-center">
-		<a href="/home/index" class="btn btn-primary">Продолжить покупки</a>
-	</div>
-	<div class="col-4"></div>
+<div class="row justify-content-center">
+	@if (Model != null)
+	{
+		ViewData["Title"] = @Model.Product.Name;
+
+		@await Html.PartialAsync("ProductCard", Model)
+
+		@await Html.PartialAsync("ProductDescription", Model)
+
+	}
+	else
+	{
+		ViewData["Title"] = "Страница товара";
+
+		<h2 class="row-title">Такого продукта не существует!</h2>
+	}
 </div>
+
+@await Html.PartialAsync("ButtonToHome")

@@ -1,12 +1,15 @@
 ﻿namespace OnlineShopWebApp.Models
 {
-	public class Product(string name, /*ProductCategory category,*/ decimal cost, string description)
+	public class Product(string name, uint brandId, uint categoryId, decimal price, string description, string shortDescription, string imagePath)
 	{
-		private static int instanceCounter = 1;
-		public int Id { get; } = instanceCounter++;
+		private static uint instanceCounter = 1;
+		public uint Id { get; } = instanceCounter++;
 		public string Name { get; } = name;
-		//public ProductCategory Category { get; } = category;
-		public decimal Cost { get; } = cost;
+		public uint ProductBrandId { get; } = brandId;
+		public uint ProductCategoryId { get; } = categoryId;
+		public decimal Price { get; } = price;
 		public string Description { get; } = description;
+		public string ShortDescription { get; set; } = shortDescription;
+		public string ImagePath { get; set; } = imagePath;
 	}
 }

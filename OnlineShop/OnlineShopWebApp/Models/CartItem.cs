@@ -2,8 +2,9 @@
 {
 	public class CartItem
 	{
-		public required Product Product { get; set; }
+		public Guid Id { get; set; } 
+		public Product Product { get; set; }
 		public int Quantity { get; set; }
-		public decimal Cost { get; set; }
+		public decimal Price => Product.Price * Quantity;
 	}
 }

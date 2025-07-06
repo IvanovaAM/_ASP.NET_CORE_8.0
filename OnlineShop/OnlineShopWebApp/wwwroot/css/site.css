@@ -24,7 +24,7 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 150px;
 }
 
 .row {
@@ -35,25 +35,37 @@ body {
 .row-title {
     text-align:center;
     margin-top: 60px;
-    margin-bottom: 60px;
     font-size: 40px;
-
-}
-
-.productId {
-    font-size: 12px;
-    color: gray;
-}
-
-.card-title {
-    text-align: center;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    font-size: 20px;
 }
 
 .heart {
     color: darkred;
     background-color: transparent;
+}
+
+#nav, footer {
+    background-color: coral;
+}
+
+.countLines {               
+    counter-reset: trCount; 
+    overflow: auto;         
+    white-space: nowrap;    
+}                           
+.countLines tr td:first-child:before {
+    position:relative;                
+    counter-increment: trCount;       
+    content:counter(trCount);         
+}                              
+.w3 
+{
+    width:3%
+}
+
+th,
+td {
+    padding: 1px;
+    border: 1px solid #ddd;
+    white-space: normal; /* Allow text wrapping */
 }
 
