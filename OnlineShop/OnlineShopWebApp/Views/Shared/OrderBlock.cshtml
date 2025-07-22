@@ -11,11 +11,11 @@
 				<tbody>
 					<tr>
 						<td>В корзине:</td>
-						<td>@Model.Items.Sum(x => x.Quantity)</td>
+						<td>@Model.Items?.Sum(x => x.Quantity)</td>
 					</tr>
 					<tr>
 						<td>Итого:</td>
-						<td>@Model.TotalPrice.ToString("c")</td>
+						<td>@Model.TotalPrice</td>
 					</tr>
 				</tbody>
 				<tfoot>

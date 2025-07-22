@@ -1,3 +1,6 @@
+using OnlineShopWebApp.Interfaces;
+using OnlineShopWebApp.Services;
+
 internal class Program
 {
 	private static void Main(string[] args)
@@ -5,6 +8,7 @@ internal class Program
 		var builder = WebApplication.CreateBuilder(args);
 
 		// Add services to the container.
+		builder.Services.AddSingleton<ICartsService, CartsService>();
 		builder.Services.AddControllersWithViews();
 
 		var app = builder.Build();

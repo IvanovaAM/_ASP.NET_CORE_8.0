@@ -1,14 +1,15 @@
-﻿using OnlineShopWebApp.Models;
+﻿using OnlineShopWebApp.Interfaces;
+using OnlineShopWebApp.Models;
 
-namespace OnlineShopWebApp.Repositories
-{
-	public static class CartsRepository
+namespace OnlineShopWebApp.Services;
+
+	public class CartsService : ICartsService
 	{
 		private static readonly List<Cart> _carts = [];
 
-		public static Cart? TryGetByUserId(string userId) => _carts.FirstOrDefault(x => x.UserId == userId);
+		public Cart? TryGetByUserId(string userId) => _carts.FirstOrDefault(x => x.UserId == userId);
 
-		public static void Add(Product product, string userId)
+		public void Add(Product product, string userId)
 		{
 			var existingCart = TryGetByUserId(userId);
 
@@ -27,11 +28,11 @@ namespace OnlineShopWebApp.Repositories
 			}
 			else
 			{
-				var existingCartItem = existingCart.Items.FirstOrDefault(x => x.Product.Id == product.Id);
+				var existingCartItem = existingCart?.Items?.FirstOrDefault(x => x.Product?.Id == product.Id);
 
 				if (existingCartItem == null)
 				{
-					existingCart.Items.Add(CreateNewItem(product));
+					existingCart?.Items?.Add(CreateNewItem(product));
 				}
 				else
 				{
@@ -40,7 +41,7 @@ namespace OnlineShopWebApp.Repositories
 			}
 		}
 
-		private static CartItem CreateNewItem(Product product)
+		private CartItem CreateNewItem(Product product)
 		{
 			return new CartItem()
 			{
@@ -50,13 +51,13 @@ namespace OnlineShopWebApp.Repositories
 			};
 		}
 
-		public static void Subtract(uint productId)
+		public void Subtract(uint productId)
 		{
 			var existingCart = TryGetByUserId(Constants.UserId);
 
 			if (existingCart != null)
 			{
-				var existingCartItem = existingCart.Items.FirstOrDefault(x => x.Product.Id == productId);
+				var existingCartItem = existingCart?.Items?.FirstOrDefault(x => x.Product?.Id == productId);
 
 				if (existingCartItem != null)
 				{
@@ -70,21 +71,18 @@ namespace OnlineShopWebApp.Repositories
 			}
 		}
 
-		public static void Delete(uint productId)
+		public void Delete(uint productId)
 		{
 			var existingCart = TryGetByUserId(Constants.UserId);
 
 			if (existingCart != null)
 			{
-				var existingCartItem = existingCart.Items.FirstOrDefault(x => x.Product.Id == productId);
+				var existingCartItem = existingCart?.Items?.FirstOrDefault(x => x.Product?.Id == productId);
 
 				if (existingCartItem != null)
 				{
-					existingCart.Items.Remove(existingCartItem);
+					existingCart?.Items?.Remove(existingCartItem);
 				}
 			}
 		}
-
-
 	}
-}

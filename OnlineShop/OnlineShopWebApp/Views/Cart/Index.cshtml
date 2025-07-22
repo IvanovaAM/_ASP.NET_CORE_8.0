@@ -5,7 +5,7 @@
 
 <div class="row justify-content-evenly">
 
-	@if (Model != null && Model.Items.Count > 0)
+	@if (Model != null && Model.Items?.Count > 0)
 	{
 		<div class="col-9">
 			<table class="table table-responsive table-striped table-hover countLines mb-5">
@@ -23,17 +23,17 @@
 					{
 						<tr align="center">
 							<td class="w3"></td>
-							<td align="left">@item.Product.Name</td>
-							<td align="left">@item.Product.Price.ToString("c")</td>
+							<td align="left">@item.Product?.Name</td>
+							<td align="left">@item.Product?.Price</td>
 							<td>@item.Quantity</td>
-							<td>@item.Price.ToString("c")</td>
+							<td>@item.Price</td>
 						</tr>
 					}
 				</tbody>
 				<tfoot>
 					<tr align="center">
 						<th colspan="2"></th>
-						<th colspan="3">Общая стоимость: @Model.TotalPrice.ToString("c")</th>
+						<th colspan="3">Общая стоимость: @Model.TotalPrice</th>
 					</tr>
 				</tfoot>
 			</table>
