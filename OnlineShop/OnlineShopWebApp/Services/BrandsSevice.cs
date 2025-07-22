@@ -1,12 +1,13 @@
-﻿using OnlineShopWebApp.Models;
+﻿using OnlineShopWebApp.Interfaces;
+using OnlineShopWebApp.Models;
 
-namespace OnlineShopWebApp.Repositories
+namespace OnlineShopWebApp.Services
 {
-	public static class ProductBrandsRepository
+	public class BrandsService : IBrandsService
 	{
         private static uint instanceCounter = 1;
 
-        private static readonly List<ProductBrand> _brands =
+        private readonly List<ProductBrand> _brands =
 		[
 			new ProductBrand(instanceCounter++, "Royal Canin", "Рационы Royal Canin созданы из высокоусвояемых нутриентов, которые удовлетворяют индивидуальные пищевые потребности питомца.", "/img/brands/rc.png"),
 			new ProductBrand(instanceCounter++, "Purina Pro Plan", "ЭКСПЕРТНЫЙ ПОДХОД К ПИТАНИЮ ВАШЕГО ПИТОМЦА\r\nКоманда квалифицированных ветеринарных специалистов и диетологов применяет одни из самых современных достижений науки для разработки рационов PRO PLAN®", "/img/brands/ppp.png"),
@@ -20,9 +21,8 @@ namespace OnlineShopWebApp.Repositories
 			new ProductBrand(instanceCounter++, "NoName", "Качественные товары разных производителей", "/img/brands/noname.png"),
 		];
 
-		public static List<ProductBrand> GetAll() => _brands;
+		public List<ProductBrand> GetAll() => _brands;
 
-
-		public static ProductBrand? TryGetById(uint id) => _brands.FirstOrDefault(x => x.Id == id);
+		public ProductBrand? TryGetById(uint id) => _brands.FirstOrDefault(x => x.Id == id);
 	}
 }
