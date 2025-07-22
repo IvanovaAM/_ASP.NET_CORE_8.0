@@ -1,0 +1,21 @@
+﻿@model ProductViewModel
+
+<div class="row justify-content-center">
+	@if (Model != null)
+	{
+		ViewData["Title"] = @Model.Product.Name;
+
+		@await Html.PartialAsync("ProductCard", Model)
+
+		@await Html.PartialAsync("ProductDescription", Model)
+
+	}
+	else
+	{
+		ViewData["Title"] = "Страница товара";
+
+		<h2 class="row-title">Такого продукта не существует!</h2>
+	}
+</div>
+
+@await Html.PartialAsync("ButtonToHome")

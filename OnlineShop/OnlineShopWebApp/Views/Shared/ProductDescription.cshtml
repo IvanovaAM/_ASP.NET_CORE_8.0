@@ -1,0 +1,15 @@
+﻿@model ProductViewModel
+
+<div class="col-5 mb-3">
+	<div class="card h-100">
+		<img class="img-thumbnail" src="@Model.ProductBrand.ImagePath" alt="@Model.ProductBrand.Name">
+		<div class="card-body shadow">
+			<a href="/Home/Index?categoryId=@Model.ProductCategory.Id"><h6 class="card-subtitle mb-2 text-muted text-center">@Model.ProductCategory.Name</h6></a>
+			<a href="/Home/Index?brandId=@Model.ProductBrand.Id"><h5>@Model.ProductBrand.Name</h5></a>
+			<h5>@Model.Product.Name</h5>
+			<h6 class="card-text">@Model.Product.Description</h6>
+			<hr />
+			<h6 class="card-text">@Model.ProductBrand.Description</h6>
+		</div>
+	</div>
+</div>

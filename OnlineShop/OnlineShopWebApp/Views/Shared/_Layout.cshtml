@@ -1,49 +1,92 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - OnlineShopWebApp</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/OnlineShopWebApp.styles.css" asp-append-version="true" />
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>@ViewData["Title"]</title>
+	<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+	<link rel="stylesheet" href="~/OnlineShopWebApp.styles.css" asp-append-version="true" />
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">OnlineShopWebApp</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
+	<div id="nav">
+		<header class="py-3 mb-3 border-bottom justify-content-center">
+			<div class="container d-flex flex-wrap justify-content-center">
+				<a href="/" class="d-flex align-items-center mb-3 mb-lg-0 me-lg-auto link-body-emphasis text-decoration-none">
+					<img src="/img/header/footprint_orange.png" class="bi me-2" width="40" height="32" aria-hidden="true">
+					<use xlink:asp-controller="Home" asp-action="Index"></use>
+					<span class="fs-4 text-white-50">Зоотовары</span>
+				</a>
+				<form class="d-flex justify-content-center">
+					<input class="form-control me-2" type="search" placeholder="Поиск" aria-label="Поиск">
+					<button class="btn btn-outline-success" type="submit">Поиск</button>
+				</form>
+			</div>
+		</header>
+		<nav class="py-2 bg-body-tertiary border-bottom border-success border-2 box-shadow navbar-light">
+			<div class="container d-flex flex-wrap">
+				<ul class="nav me-auto">
+					<li class="nav-item">
+						<a href="#" class="nav-link link-body-emphasis px-2 active text-white-50" aria-current="page">Собаки</a>
+					</li>
+					<li class="nav-item">
+						<a href="#" class="nav-link link-body-emphasis px-2 text-white-50">Кошки</a>
+					</li>
+					<li class="nav-item">
+						<a href="#" class="nav-link link-body-emphasis px-2 text-white-50">Грызуны</a>
+					</li>
+					<li class="nav-item">
+						<a href="#" class="nav-link link-body-emphasis px-2 text-white-50">Птицы</a>
+					</li>
+					<li class="nav-item">
+						<a href="#" class="nav-link link-body-emphasis px-2 text-white-50">Рыбки</a>
+					</li>
+				</ul>
+				<div>
+					<button class="btn btn-outline-success" type="submit">Войти</button>
+					<a class="btn btn-outline-success" asp-controller="Cart" asp-action="Index">Корзина</a>
+				</div>
+			</div>
+		</nav>
+	</div>
+	<div class="container">
+		<main role="main" class="pb-3">
+			@RenderBody()
+		</main>
+	</div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2025 - OnlineShopWebApp - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @await RenderSectionAsync("Scripts", required: false)
+	<footer class="footer border-top border-2 border-success text-muted">
+		<div class="container">
+			<ul class="nav justify-content-center border-bottom">
+				<li class="nav-item">
+					<a asp-controller="Home" asp-action="Index" class="nav-link px-5 text-white-50">Главная</a>
+				</li>
+				<li class="nav-item">
+					<a href="#" class="nav-link px-5 text-white-50">Features</a>
+				</li>
+				<li class="nav-item">
+					<a href="#" class="nav-link px-5 text-white-50">Pricing</a>
+				</li>
+				<li class="nav-item">
+					<a href="#" class="nav-link px-5 text-white-50">FAQs</a>
+				</li>
+				<li class="nav-item">
+					<a href="#" class="nav-link px-5 text-white-50">About</a>
+				</li>
+			</ul>
+			<p class="float-end">
+				<a href="#" class="text-success">Вернуться к началу</a>
+			</p>
+			<p class="text-center">
+				&copy; 2025 - Зоотовары -
+			</p>			
+		</div>
+	</footer>
+
+
+	<script src="~/lib/jquery/dist/jquery.min.js"></script>
+	<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="~/js/site.js" asp-append-version="true"></script>
+	@await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
