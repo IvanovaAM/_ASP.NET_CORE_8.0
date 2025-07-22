@@ -6,14 +6,9 @@ namespace OnlineShopWebApp.Controllers
 {
 	public class ProductController : Controller
 	{
-		private readonly ProductsRepository _productsRepository = new();
-		private readonly ProductBrandsRepository _productBrandRepository = new();
-		private readonly ProductCategoriesRepository _productCategoriesRepository = new();
-
-
 		public IActionResult Index(uint id)
 		{
-			var product = _productsRepository.TryGetById(id);
+			var product = ProductsRepository.TryGetById(id);
 
 			ProductViewModel? productViewModel = null;
 
@@ -22,8 +17,8 @@ namespace OnlineShopWebApp.Controllers
 				productViewModel = new ProductViewModel()
 				{
 					Product = product,
-					ProductBrand = _productBrandRepository.TryGetById(product.ProductBrandId),
-					ProductCategory = _productCategoriesRepository.TryGetById(product.ProductCategoryId)
+					ProductBrand = ProductBrandsRepository.TryGetById(product.BrandId),
+					ProductCategory = ProductCategoriesRepository.TryGetById(product.CategoryId)
 				};
 			}
 

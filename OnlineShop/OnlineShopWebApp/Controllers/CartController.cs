@@ -5,8 +5,6 @@ namespace OnlineShopWebApp.Controllers
 {
 	public class CartController : Controller
 	{
-		private readonly ProductsRepository _productRepository = new();
-
 		public IActionResult Index()
 		{
 			var cart = CartsRepository.TryGetByUserId(Constants.UserId);
@@ -16,7 +14,7 @@ namespace OnlineShopWebApp.Controllers
 
 		public IActionResult Add(uint productId)
 		{
-			var product = _productRepository.TryGetById(productId);
+			var product = ProductsRepository.TryGetById(productId);
 
 			if (product != null)
 			{

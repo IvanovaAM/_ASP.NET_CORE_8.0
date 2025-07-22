@@ -2,7 +2,7 @@
 
 namespace OnlineShopWebApp.Repositories
 {
-	public class ProductCategoriesRepository
+	public static class ProductCategoriesRepository
 	{
 		private static readonly List<ProductCategory> _categories =
 		[
@@ -15,8 +15,8 @@ namespace OnlineShopWebApp.Repositories
 			new ProductCategory("ВетАптека", "Медицинские товары, лекарства для животных", "")
 		];
 
-		public List<ProductCategory> GetAll => _categories;
+		public static List<ProductCategory> GetAll() => _categories;
 
-		public ProductCategory? TryGetById(uint id) => _categories.FirstOrDefault(x => x.Id == id);
+		public static ProductCategory? TryGetById(uint id) => _categories.FirstOrDefault(x => x.Id == id);
 	}
 }
