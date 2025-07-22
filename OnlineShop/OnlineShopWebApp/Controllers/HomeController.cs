@@ -1,16 +1,16 @@
 using Microsoft.AspNetCore.Mvc;
+using OnlineShopWebApp.Interfaces;
 using OnlineShopWebApp.Models;
-using OnlineShopWebApp.Repositories;
 
 namespace OnlineShopWebApp.Controllers
 {
-	public class HomeController : Controller
+	public class HomeController(IBrandsService brandsService, ICategoriesService categoriesService, IProductsService productsService) : Controller
 	{
-		public IActionResult Index(uint brandId = 0, uint categoryId = 0)
+        public IActionResult Index(uint brandId = 0, uint categoryId = 0)
 		{
-			List<Product>? products = ProductsRepository.GetAll();
-			List<ProductBrand>? productBrands = ProductBrandsRepository.GetAll();
-			List<ProductCategory>? productsCategories = ProductCategoriesRepository.GetAll();
+			List<Product>? products = productsService.GetAll();
+			List<ProductBrand>? productBrands = brandsService.GetAll();
+			List<ProductCategory>? productsCategories = categoriesService.GetAll();
 
 
 			var filter = false;
@@ -20,14 +20,14 @@ namespace OnlineShopWebApp.Controllers
 			{
 				products = products.Where(x => x.BrandId == brandId).ToList();
 				filter = true;
-				currentFilter = ProductBrandsRepository.GetAll().FirstOrDefault(x => x.Id == brandId)?.Name;
+				currentFilter = brandsService.GetAll().FirstOrDefault(x => x.Id == brandId)?.Name;
 			}
 
 			if (brandId == 0 && categoryId > 0)
 			{
 				products = products.Where(x => x.CategoryId == categoryId).ToList();
 				filter = true;
-				currentFilter = ProductCategoriesRepository.GetAll().FirstOrDefault(x => x.Id == categoryId)?.Name;
+				currentFilter = categoriesService.GetAll().FirstOrDefault(x => x.Id == categoryId)?.Name;
 			}
 
 			products?.OrderBy(x => x.Id);
@@ -43,8 +43,8 @@ namespace OnlineShopWebApp.Controllers
 					var obj = new ProductViewModel()
 					{
 						Product = product,
-						ProductBrand = ProductBrandsRepository.TryGetById(product.BrandId),
-						ProductCategory = ProductCategoriesRepository.TryGetById(product.CategoryId),
+						ProductBrand = brandsService.TryGetById(product.BrandId),
+						ProductCategory = categoriesService.TryGetById(product.CategoryId),
 					};
 					productsViewModels.Add(obj);
 				}

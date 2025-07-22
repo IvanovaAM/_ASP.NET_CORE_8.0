@@ -1,9 +1,10 @@
-﻿using OnlineShopWebApp.Models;
+﻿using OnlineShopWebApp.Interfaces;
+using OnlineShopWebApp.Models;
 
-namespace OnlineShopWebApp.Repositories
+namespace OnlineShopWebApp.Services
 {
-	public static class ProductsRepository
-	{
+	public class ProductsService : IProductsService
+    {
         private static uint instanceCounter = 1;
 
         private static readonly List<Product> _products = 
@@ -35,7 +36,8 @@ namespace OnlineShopWebApp.Repositories
 
 		];
 
-		public static List<Product> GetAll() => _products;
-		public static Product? TryGetById(uint id) => _products.FirstOrDefault(x => x.Id == id);
+		public List<Product> GetAll() => _products;
+
+		public Product? TryGetById(uint id) => _products.FirstOrDefault(x => x.Id == id);
 	}
 }

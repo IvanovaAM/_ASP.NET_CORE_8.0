@@ -1,31 +1,25 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using OnlineShopWebApp.Interfaces;
-using OnlineShopWebApp.Repositories;
+using OnlineShopWebApp.Services;
 
 namespace OnlineShopWebApp.Controllers
 {
-	public class CartController : Controller
+	public class CartController(ICartsService cartsService, IProductsService productsService) : Controller
 	{
-		private readonly ICartsService _cartsService;
-        public CartController(ICartsService cartsService)
-        {
-			_cartsService = cartsService;
-        }
-
         public IActionResult Index()
 		{
-			var cart = _cartsService.TryGetByUserId(Constants.UserId);
+			var cart = cartsService.TryGetByUserId(Constants.UserId);
 			
 			return View(cart);
 		}
 
 		public IActionResult Add(uint productId)
 		{
-			var product = ProductsRepository.TryGetById(productId);
+			var product = productsService.TryGetById(productId);
 
 			if (product != null)
 			{
-                _cartsService.Add(product, Constants.UserId);
+                cartsService.Add(product, Constants.UserId);
 			}
 
 			return RedirectToAction(nameof(Index));
@@ -33,7 +27,7 @@ namespace OnlineShopWebApp.Controllers
 
 		public IActionResult Subtract(uint productId)
 		{
-            _cartsService.Subtract(productId);
+            cartsService.Subtract(productId);
 
 			return RedirectToAction(nameof(Index));
 		}

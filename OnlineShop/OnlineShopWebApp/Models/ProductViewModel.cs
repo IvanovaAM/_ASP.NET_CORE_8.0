@@ -2,8 +2,8 @@
 {
 	public class ProductViewModel
 	{
-		public required Product Product { get; set; }
-		public required ProductBrand ProductBrand { get; set; }
-		public required ProductCategory ProductCategory { get; set; }
+		public Product? Product { get; set; }
+		public ProductBrand? ProductBrand { get; set; }
+		public ProductCategory? ProductCategory { get; set; }
 	}
 }

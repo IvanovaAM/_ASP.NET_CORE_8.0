@@ -1,9 +1,10 @@
-﻿using OnlineShopWebApp.Models;
+﻿using OnlineShopWebApp.Interfaces;
+using OnlineShopWebApp.Models;
 
-namespace OnlineShopWebApp.Repositories
+namespace OnlineShopWebApp.Services
 {
-	public static class ProductCategoriesRepository
-	{
+	public class CategoriesService : ICategoriesService
+    {
 		private static readonly List<ProductCategory> _categories =
 		[
 			new ProductCategory("Корм", "Товары для питания животных - лакомства, ветеринарные корма, ",""),
@@ -15,8 +16,8 @@ namespace OnlineShopWebApp.Repositories
 			new ProductCategory("ВетАптека", "Медицинские товары, лекарства для животных", "")
 		];
 
-		public static List<ProductCategory> GetAll() => _categories;
+		public List<ProductCategory> GetAll() => _categories;
 
-		public static ProductCategory? TryGetById(uint id) => _categories.FirstOrDefault(x => x.Id == id);
+		public ProductCategory? TryGetById(uint id) => _categories.FirstOrDefault(x => x.Id == id);
 	}
 }

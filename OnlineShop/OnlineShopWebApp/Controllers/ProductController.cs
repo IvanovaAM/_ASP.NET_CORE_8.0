@@ -1,14 +1,14 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using OnlineShopWebApp.Models;
-using OnlineShopWebApp.Repositories;
+using OnlineShopWebApp.Interfaces;
 
 namespace OnlineShopWebApp.Controllers
 {
-	public class ProductController : Controller
+	public class ProductController(IProductsService productsService, IBrandsService brandsService, ICategoriesService categoriesService) : Controller
 	{
-		public IActionResult Index(uint id)
+        public IActionResult Index(uint id)
 		{
-			var product = ProductsRepository.TryGetById(id);
+			var product = productsService.TryGetById(id);
 
 			ProductViewModel? productViewModel = null;
 
@@ -17,8 +17,8 @@ namespace OnlineShopWebApp.Controllers
 				productViewModel = new ProductViewModel()
 				{
 					Product = product,
-					ProductBrand = ProductBrandsRepository.TryGetById(product.BrandId),
-					ProductCategory = ProductCategoriesRepository.TryGetById(product.CategoryId)
+					ProductBrand = brandsService.TryGetById(product.BrandId),
+					ProductCategory = categoriesService.TryGetById(product.CategoryId)
 				};
 			}
 

@@ -10,7 +10,10 @@ internal class Program
         // Add services to the container.
         builder.Services.AddSingleton<ICartsService, CartsService>();
         builder.Services.AddSingleton<IBrandsService, BrandsService>();
-		builder.Services.AddControllersWithViews();
+        builder.Services.AddSingleton<ICategoriesService, CategoriesService>();
+        builder.Services.AddSingleton<IProductsService, ProductsService>();
+
+        builder.Services.AddControllersWithViews();
 
 		var app = builder.Build();
 
