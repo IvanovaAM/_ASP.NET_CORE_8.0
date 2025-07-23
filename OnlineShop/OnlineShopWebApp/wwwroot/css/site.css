@@ -69,3 +69,8 @@ td {
     white-space: normal; /* Allow text wrapping */
 }
 
+.btn-subtract, .btn-add {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+

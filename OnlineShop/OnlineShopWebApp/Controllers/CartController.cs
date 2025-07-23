@@ -31,5 +31,12 @@ namespace OnlineShopWebApp.Controllers
 
 			return RedirectToAction(nameof(Index));
 		}
-	}
+
+        public IActionResult Clear()
+        {
+            cartsService.Delete();
+
+            return RedirectToAction(nameof(Index));
+        }
+    }
 }

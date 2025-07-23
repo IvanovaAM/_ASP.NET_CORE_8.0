@@ -24,8 +24,12 @@
 						<tr align="center">
 							<td class="w3"></td>
 							<td align="left">@item.Product?.Name</td>
-							<td align="left">@item.Product?.Price</td>
-							<td>@item.Quantity</td>
+							<td>@item.Product?.Price</td>
+							<td>
+								<a asp-controller="Cart" asp-action="Subtract" asp-route-productId="@item.Product?.Id" class="btn btn-warning btn-subtract">-</a>
+								@item.Quantity
+								<a asp-controller="Cart" asp-action="Add" asp-route-productId="@item.Product?.Id" class="btn btn-warning btn-add">+</a>
+							</td>
 							<td>@item.Price</td>
 						</tr>
 					}
@@ -35,7 +39,12 @@
 						<th colspan="2"></th>
 						<th colspan="3">Общая стоимость: @Model.TotalPrice</th>
 					</tr>
-				</tfoot>
+					<tr align="center">
+						<th colspan="5">
+							<a asp-controller="Cart" asp-action="Clear" class="btn btn-warning">Очистить корзину</a>
+						</th>
+					</tr>
+                </tfoot>                
 			</table>
 		</div>
 		@await Html.PartialAsync("OrderBlock", Model)

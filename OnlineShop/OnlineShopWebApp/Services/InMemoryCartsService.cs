@@ -82,4 +82,11 @@ namespace OnlineShopWebApp.Services;
 				}
 			}
 		}
-	}
+
+    public void Delete()
+    {
+        var existingCart = TryGetByUserId(Constants.UserId);
+
+        existingCart?.Items?.Clear();
+    }
+}

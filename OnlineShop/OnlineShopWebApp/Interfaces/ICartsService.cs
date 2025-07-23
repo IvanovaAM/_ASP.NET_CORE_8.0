@@ -11,5 +11,8 @@ namespace OnlineShopWebApp.Interfaces
 		void Subtract(uint productId);
 
 		void Delete(uint productId);
-	}
+
+        void Delete();
+
+    }
 }
