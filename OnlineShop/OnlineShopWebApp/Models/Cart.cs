@@ -1,6 +1,4 @@
-﻿using OnlineShopWebApp.Repositories;
-
-namespace OnlineShopWebApp.Models
+﻿namespace OnlineShopWebApp.Models
 {
 	public class Cart
 	{

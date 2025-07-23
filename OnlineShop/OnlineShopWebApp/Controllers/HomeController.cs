@@ -18,14 +18,14 @@ namespace OnlineShopWebApp.Controllers
 
 			if (brandId > 0 && categoryId == 0)
 			{
-				products = products.Where(x => x.BrandId == brandId).ToList();
+				products = [.. products.Where(x => x.BrandId == brandId)];
 				filter = true;
 				currentFilter = brandsService.GetAll().FirstOrDefault(x => x.Id == brandId)?.Name;
 			}
 
 			if (brandId == 0 && categoryId > 0)
 			{
-				products = products.Where(x => x.CategoryId == categoryId).ToList();
+				products = [.. products.Where(x => x.CategoryId == categoryId)];
 				filter = true;
 				currentFilter = categoriesService.GetAll().FirstOrDefault(x => x.Id == categoryId)?.Name;
 			}
