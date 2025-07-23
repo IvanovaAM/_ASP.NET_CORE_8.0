@@ -3,7 +3,7 @@ using OnlineShopWebApp.Models;
 
 namespace OnlineShopWebApp.Services;
 
-	public class CartsService : ICartsService
+	public class InMemoryCartsService : ICartsService
 	{
 		private static readonly List<Cart> _carts = [];
 
@@ -19,10 +19,10 @@ namespace OnlineShopWebApp.Services;
 				{
 					Id = Guid.NewGuid(),
 					UserId = userId,
-					Items = new List<CartItem>()
-					{
-						CreateNewItem(product)
-					}
+					Items =
+                    [
+                        CreateNewItem(product)
+					]
 				};
 				_carts.Add(newCart);
 			}
@@ -41,17 +41,14 @@ namespace OnlineShopWebApp.Services;
 			}
 		}
 
-		private CartItem CreateNewItem(Product product)
-		{
-			return new CartItem()
-			{
-				Id = Guid.NewGuid(),
-				Product = product,
-				Quantity = 1,
-			};
-		}
+    private static CartItem CreateNewItem(Product product) => new()
+    {
+        Id = Guid.NewGuid(),
+        Product = product,
+        Quantity = 1,
+    };
 
-		public void Subtract(uint productId)
+    public void Subtract(uint productId)
 		{
 			var existingCart = TryGetByUserId(Constants.UserId);
 

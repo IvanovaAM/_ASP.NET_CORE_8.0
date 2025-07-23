@@ -8,10 +8,10 @@ internal class Program
 		var builder = WebApplication.CreateBuilder(args);
 
         // Add services to the container.
-        builder.Services.AddSingleton<ICartsService, CartsService>();
+        builder.Services.AddSingleton<ICartsService, InMemoryCartsService>();
         builder.Services.AddSingleton<IBrandsService, BrandsService>();
-        builder.Services.AddSingleton<ICategoriesService, CategoriesService>();
-        builder.Services.AddSingleton<IProductsService, ProductsService>();
+        builder.Services.AddSingleton<ICategoriesService, InMemoryCategoriesService>();
+        builder.Services.AddSingleton<IProductsService, InMemoryProductsService>();
 
         builder.Services.AddControllersWithViews();
 

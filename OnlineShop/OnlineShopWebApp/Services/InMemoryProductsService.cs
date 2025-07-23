@@ -3,7 +3,7 @@ using OnlineShopWebApp.Models;
 
 namespace OnlineShopWebApp.Services
 {
-	public class ProductsService : IProductsService
+	public class InMemoryProductsService : IProductsService
     {
         private static uint instanceCounter = 1;
 

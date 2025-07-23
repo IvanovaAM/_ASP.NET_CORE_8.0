@@ -3,7 +3,7 @@ using OnlineShopWebApp.Models;
 
 namespace OnlineShopWebApp.Services
 {
-	public class CategoriesService : ICategoriesService
+	public class InMemoryCategoriesService : ICategoriesService
     {
 		private static readonly List<ProductCategory> _categories =
 		[
